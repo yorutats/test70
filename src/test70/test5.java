@@ -11,8 +11,10 @@ public class test5 {
         i=0;
         N=1;
         while (M>N) {
-            N*=i++;
+            i++;
+            N*=i;
+            //N*=++i; //先執行再加一
         }
-        System.out.print(i);
+        System.out.printf("超過M為%d的最小階層N為%d", M, i);
     }
 }

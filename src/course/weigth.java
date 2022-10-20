@@ -1,4 +1,4 @@
-package test70;
+package course;
 
 class Person {  
     String name; //屬性

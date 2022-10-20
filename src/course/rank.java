@@ -1,4 +1,4 @@
-package test70;
+package course;
 
 import javax.print.event.PrintEvent;
 
@@ -100,7 +100,6 @@ public class rank {
             }
         }
 
-        char[][][] midterr;
 
         }
 

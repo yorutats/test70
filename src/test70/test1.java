@@ -4,8 +4,11 @@
  * and open the template in the editor.
  */
 package test70;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
+
 /**
  *
  * @author s2000
@@ -15,65 +18,49 @@ public class test1 {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String[] args) {
-        //
-        // 找出數字字串中最大的質數
-        //
 
-       
-        Scanner scanner = new Scanner(System.in); //初始化Scanner
+        Scanner scanner = new Scanner(System.in); // 初始化Scanner
         System.out.println("輸入一個正整數: ");
-        int num = scanner.nextInt();
-        String s = Integer.toString(num); //數字轉字串
-        int i = 1;
-        int j =s.length();
-        ArrayList<Integer> al = new ArrayList<Integer>();
-        
-       
-        if (i<=s.length()) {
-            int k = (int) Math.pow(10, i-1);
-            al.add(num/k%(10*(s.length()-1)));  
-            i+=1;
-            System.out.println(i);
-        }
-        if (j!=0) {
-            int k = (int) Math.pow(10, j-1);
-            al.add(num/k%(10*(j)));  
-            j-=1;
-            System.out.println(j);
-        }
-        System.out.println(al);
-        
-    }
-        
-    }
+        int number = scanner.nextInt();
+        String s = Integer.toString(number);
+        ArrayList<Integer> prime = new ArrayList<Integer>();
+        ArrayList<Integer> splitnum = new ArrayList<Integer>();
 
-/* 
-    public static void topic1() {
-        
-        
-        num=scanner.nextin
-        int strLenth = str.length();
-        int number;
-        int maxPrime = 0;
-        for (int numLen = strLenth; numLen >= 0; numLen--) {
-            for (int i = 0; i + numLen < strLenth; i++) {
-                number = Integer.parseInt(str.substring(i, (i + numLen + 1)));
-                if (isPrime(number)) {
-                    if (number > maxPrime) {
-                        maxPrime = number;
-                    }
-                }
-            }
-            if (maxPrime != 0) {
-                break;
-            }
+        //質數新增
+        for (int i = 2; i <= number; i++) {
+			boolean flag = true;
+			for (int j = 2; j <= Math.sqrt(i); j++) {
+				if (i % j == 0) {
+					flag = false;
+					break;
+				}
+			}
+			if (flag) {
+                prime.add(i);
+			}
+            
+            
         }
-        if (maxPrime != 0) {
-            System.out.println("最大質數為: " + maxPrime);
-        } else {
+
+        //分割字串
+        for (int i = 0; i <= s.length(); i++) {
+            for (int k = 0; k < i; k++) {
+                splitnum.add(Integer.parseInt((s.substring(k,i))));
+            }
+            
+        }
+
+        //找相同元素
+        prime.retainAll(splitnum);
+        boolean empty = prime.isEmpty();
+        if(empty){
             System.out.println("No prime found");
-        }
-    }
-*/    
+          }else{
+            System.out.println("最大質數為:"+Collections.max(prime));
+          }
 
+    }
+
+}
